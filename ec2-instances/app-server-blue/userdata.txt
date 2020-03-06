@@ -1,0 +1,12 @@
+#! /bin/bash
+sudo apt-get update
+sudo apt-get install awscli -y
+sudo apt-get install git -y
+sudo apt-get install docker.io -y
+sudo apt-get install nginx  -y
+git clone https://github.com/sai-pebblepost/pebble-flaskapp.git
+cd pebble-flaskapp
+sudo docker build -t flaskapp .
+sudo docker run -it -d -p 8000:80 flaskapp  
+sudo aws s3 cp -r s3://pebble-config/qa/* /etc/nginx/sites-enabled/
+sudo service nginx restart
