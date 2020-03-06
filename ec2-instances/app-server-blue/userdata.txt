@@ -8,5 +8,5 @@ git clone https://github.com/sai-pebblepost/pebble-flaskapp.git
 cd pebble-flaskapp
 sudo docker build -t flaskapp .
 sudo docker run -it -d -p 8000:80 flaskapp  
-sudo aws s3 cp -r s3://pebble-config/qa/* /etc/nginx/sites-enabled/
+sudo aws s3 cp s3://pebble-config/flaskec2 /etc/nginx/sites-enabled/
 sudo service nginx restart
